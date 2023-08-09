@@ -1,12 +1,10 @@
 import React from 'react';
 import Navigation from '../Navigation/Navigation';
 
-
 const Header = () => {
     return (
-        <header>
+        <header className="mb-5">
             <Navigation/>
-            <h1>Welcome to My App</h1>
         </header>
     );
 };
