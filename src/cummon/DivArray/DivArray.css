@@ -1,0 +1,12 @@
+img.w-10 {
+    width: 10vw;
+    height: 9vw;
+}
+
+.w-ft {
+    width: fit-content !important;
+}
+
+.w-15 {
+    width: 15% !important;
+}
