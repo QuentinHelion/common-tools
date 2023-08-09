@@ -25,24 +25,27 @@ function Home() {
             </Container>
 
             <hr className="m-5"/>
-            <h2 className="mb-4">About Us</h2>
-            <p>
-                Horum adventum praedocti speculationibus fidis rectores militum
-                tessera data sollemni armatos omnes celeri eduxere procursu et agiliter
-                praeterito Calycadni fluminis ponte, cuius undarum magnitudo murorum
-                adluit turres, in speciem locavere pugnandi. neque tamen exiluit
-                quisquam nec permissus est congredi. formidabatur enim flagrans vesania
-                manus et superior numero et ruitura sine respectu salutis in ferrum.
-                <br/>
-                Ardeo, mihi credite, Patres conscripti (id quod vosmet de me existimatis
-                et facitis ipsi) incredibili quodam amore patriae, qui me amor et
-                subvenire olim impendentibus periculis maximis cum dimicatione capitis,
-                et rursum, cum omnia tela undique esse intenta in patriam viderem,
-                subire coegit atque excipere unum pro universis. Hic me meus in rem
-                publicam animus pristinus ac perennis cum C. Caesare reducit, reconciliat,
-                restituit in gratiam.
-            </p>
-            <Button inner="Learn more..." event="function () => { window.location = '/about'; } "/>
+
+            <Container className="text-center mb-5">
+                <h2 className="mb-4">About Us</h2>
+                <p>
+                    Horum adventum praedocti speculationibus fidis rectores militum
+                    tessera data sollemni armatos omnes celeri eduxere procursu et agiliter
+                    praeterito Calycadni fluminis ponte, cuius undarum magnitudo murorum
+                    adluit turres, in speciem locavere pugnandi. neque tamen exiluit
+                    quisquam nec permissus est congredi. formidabatur enim flagrans vesania
+                    manus et superior numero et ruitura sine respectu salutis in ferrum.
+                    <br/>
+                    Ardeo, mihi credite, Patres conscripti (id quod vosmet de me existimatis
+                    et facitis ipsi) incredibili quodam amore patriae, qui me amor et
+                    subvenire olim impendentibus periculis maximis cum dimicatione capitis,
+                    et rursum, cum omnia tela undique esse intenta in patriam viderem,
+                    subire coegit atque excipere unum pro universis. Hic me meus in rem
+                    publicam animus pristinus ac perennis cum C. Caesare reducit, reconciliat,
+                    restituit in gratiam.
+                </p>
+                <Button inner="Learn more..." link="/about"/>
+            </Container>
         </Container>
     );
 }

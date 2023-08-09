@@ -1,14 +1,16 @@
 import PropTypes from "prop-types";
+// import '../../styles/index.css';
+import './Button.css';
 
-const Button = ({inner, event}) => {
+const Button = ({inner, link}) => {
     return (
-        <button onClick={event}>{inner}</button>
+        <a className="btn btn-primary" href={link}>{inner}</a>
     )
 }
 
 Button.propTypes = {
     inner: PropTypes.string.isRequired,
-    event: PropTypes.any
+    link: PropTypes.string.isRequired
 }
 
 export default Button;

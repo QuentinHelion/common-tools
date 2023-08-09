@@ -10,7 +10,7 @@ const DivArray = ({link, imgRef}) => {
     };
 
     return (
-        <div className="border shadow-sm rounded-3 p-3" onClick={handleDivClick} >
+        <div id="divElement" className="border shadow-sm rounded-3 p-3" onClick={handleDivClick} >
             <img className="w-10 m-4" src={imgRef} alt="This image can't be loaded"/>
         </div>
     );
