@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Container from "react-bootstrap/Container";
 
 function Ping() {
     const [inputValue, setInputValue] = useState('');
@@ -9,46 +10,49 @@ function Ping() {
     };
 
     const interpreter = (array) => {
-        let result = '';
+        let stat_min = 99999;
+        let stat_max = 0
+        let stat_moy = 0
+        let i = 0;
+        console.log(stat_max);
         array.forEach((items)=>{
-            // result += `<pre>Ping: octets=${items.octets} temps=${items.temp} ms TTL=${items.ttl}</pre>`;
+            stat_min = items.temp < stat_min ? items.temp : stat_min;
+            stat_max = items.temp > stat_max ? items.temp : stat_max;
+            stat_moy += items.temp;
+            i++;
             document.getElementById('result').innerHTML += `<pre>Ping: octets=${items.octets} temps=${items.temp} ms TTL=${ items.ttl}</pre>`;
         })
-        return result;
+        stat_moy = parseInt( stat_moy / i );
+        document.getElementById('result').innerHTML += `Stats: min=${stat_min}ms, max=${stat_max}ms, moy=${stat_moy}ms`;
+
     }
 
     const fetchData = async () => {
+        document.getElementById('result').innerHTML = null;
         try {
             const response = await fetch(`http://localhost:5000/ping?addr=${inputValue}`);
             const data = await response.json();
-            const i_data = interpreter(data);
-            setApiData(i_data);
+            interpreter(data);
         } catch (error) {
             console.error('Error fetching data:', error);
         }
     };
 
     return (
-        <div>
+        <Container>
             <h1>Ping</h1>
             <input
                 type="text"
                 value={inputValue}
                 onChange={handleInputChange}
-                placeholder="Enter argument"
+                placeholder="Enter address"
             />
             <button onClick={fetchData}>Ping</button>
             <div>
                 <h2>API Response:</h2>
                 <div id="result"></div>
             </div>
-            {apiData && (
-                <div>
-                    <h2>API Response:</h2>
-                    {/*<div id="result"></div>*/}
-                </div>
-            )}
-        </div>
+        </Container>
     );
 }
 
