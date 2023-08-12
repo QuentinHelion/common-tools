@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import Container from "react-bootstrap/Container";
+import PageTitle from "../../cummon/PageTittle/PageTitle";
+import Button from "../../cummon/Button/Button";
 
 function Ping() {
     const [inputValue, setInputValue] = useState('');
-    const [apiData, setApiData] = useState(null);
 
     const handleInputChange = (event) => {
         setInputValue(event.target.value);
@@ -14,13 +15,12 @@ function Ping() {
         let stat_max = 0
         let stat_moy = 0
         let i = 0;
-        console.log(stat_max);
         array.forEach((items)=>{
             stat_min = items.temp < stat_min ? items.temp : stat_min;
             stat_max = items.temp > stat_max ? items.temp : stat_max;
             stat_moy += items.temp;
             i++;
-            document.getElementById('result').innerHTML += `<pre>Ping: octets=${items.octets} temps=${items.temp} ms TTL=${ items.ttl}</pre>`;
+            document.getElementById('result').innerHTML += `Ping: octets=${items.octets} temps=${items.temp} ms TTL=${ items.ttl}\n`;
         })
         stat_moy = parseInt( stat_moy / i );
         document.getElementById('result').innerHTML += `Stats: min=${stat_min}ms, max=${stat_max}ms, moy=${stat_moy}ms`;
@@ -40,18 +40,25 @@ function Ping() {
 
     return (
         <Container>
-            <h1>Ping</h1>
-            <input
-                type="text"
-                value={inputValue}
-                onChange={handleInputChange}
-                placeholder="Enter address"
-            />
-            <button onClick={fetchData}>Ping</button>
-            <div>
-                <h2>API Response:</h2>
-                <div id="result"></div>
-            </div>
+            <PageTitle title="Ping"/>
+            <Container>
+                <div className="d-flex justify-content-center">
+                    <input
+                        type="text"
+                        value={inputValue}
+                        onChange={handleInputChange}
+                        className="form-control w-25 me-5"
+                        placeholder="Enter address"
+                    />
+                    <Button event={fetchData} inner="Ping"/>
+                </div>
+                <div>
+                    <h3 className="mt-5">API Response:</h3>
+                    <pre>
+                        <code id="result" className=".ide-container"></code>
+                    </pre>
+                </div>
+            </Container>
         </Container>
     );
 }
