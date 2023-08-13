@@ -1,5 +1,5 @@
 import DivArray from "../../cummon/DivArray/DivArray";
-import Button from "../../cummon/Button/Button";
+import ButtonLink from "../../cummon/ButtonLink/ButtonLink";
 import React from "react";
 import Container from "react-bootstrap/Container";
 
@@ -44,7 +44,7 @@ function Home() {
                     publicam animus pristinus ac perennis cum C. Caesare reducit, reconciliat,
                     restituit in gratiam.
                 </p>
-                <Button inner="Learn more..." link="/about"/>
+                <ButtonLink inner="Learn more..." link="/about"/>
             </Container>
         </Container>
     );
