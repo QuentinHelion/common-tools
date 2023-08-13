@@ -15,20 +15,26 @@ function Ping() {
         let stat_max = 0
         let stat_moy = 0
         let i = 0;
-        array.forEach((items)=>{
-            stat_min = items.temp < stat_min ? items.temp : stat_min;
-            stat_max = items.temp > stat_max ? items.temp : stat_max;
-            stat_moy += items.temp;
-            i++;
-            document.getElementById('result').innerHTML += `Ping: octets=${items.octets} temps=${items.temp} ms TTL=${ items.ttl}\n`;
-        })
-        stat_moy = parseInt( stat_moy / i );
-        document.getElementById('result').innerHTML += `Stats: min=${stat_min}ms, max=${stat_max}ms, moy=${stat_moy}ms`;
+        const result_element = document.getElementById('result');
+        result_element.innerHTML = null;
+        try {
+            array.forEach((items) => {
+                stat_min = items.temp < stat_min ? items.temp : stat_min;
+                stat_max = items.temp > stat_max ? items.temp : stat_max;
+                stat_moy += items.temp;
+                i++;
+                result_element.innerHTML += `Ping: octets=${items.octets} temps=${items.temp} ms TTL=${items.ttl}\n`;
+            })
+            stat_moy = parseInt(stat_moy / i);
+            result_element.innerHTML += `Stats: min=${stat_min}ms, max=${stat_max}ms, moy=${stat_moy}ms`;
+        } catch(e){
+            result_element.innerHTML = 'Error, unknown host'
+        }
 
     }
 
     const fetchData = async () => {
-        document.getElementById('result').innerHTML = null;
+        document.getElementById('result').innerHTML = "Pinging... ";
         try {
             const response = await fetch(`http://localhost:5000/ping?addr=${inputValue}`);
             const data = await response.json();
@@ -53,9 +59,9 @@ function Ping() {
                     <Button event={fetchData} inner="Ping"/>
                 </div>
                 <div>
-                    <h3 className="mt-5">API Response:</h3>
-                    <pre>
-                        <code id="result" className=".ide-container"></code>
+                    <h3 className="mt-5">Ping Result:</h3>
+                    <pre className="ide-container">
+                        <code id="result"></code>
                     </pre>
                 </div>
             </Container>

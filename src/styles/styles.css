@@ -8,6 +8,7 @@ pre {
     padding: 10px;
     background-color: hsl(0,0%,96.5%);;
     font-family: monospace;
+    font-size: 20px;
     height: 400px;
     overflow: auto;
     color: black;
