@@ -1,15 +1,15 @@
 pre {
-    white-space: pre-wrap;       /* Since CSS 2.1 */
+  white-space: pre-wrap;       /* Since CSS 2.1 */
 }
 
 .ide-container {
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 10px;
-    background-color: hsl(0,0%,96.5%);;
-    font-family: monospace;
-    font-size: 20px;
-    height: 400px;
-    overflow: auto;
-    color: black;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: hsl(0,0%,96.5%);
+  font-family: monospace;
+  font-size: 20px;
+  height: 400px;
+  overflow: auto;
+  color: black;
 }
