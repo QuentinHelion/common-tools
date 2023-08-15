@@ -21,11 +21,11 @@ function Ping() {
             array.forEach((items) => {
                 stat_min = items.temp < stat_min ? items.temp : stat_min;
                 stat_max = items.temp > stat_max ? items.temp : stat_max;
-                stat_moy += items.temp;
+                stat_moy += parseInt(items.temp);
                 i++;
-                result_element.innerHTML += `Ping: octets=${items.octets} temps=${items.temp} ms TTL=${items.ttl}\n`;
+                result_element.innerHTML += `Ping: icmp_seq=${items.icmp_seq} time=${items.temp} ms TTL=${items.ttl}\n`;
             })
-            stat_moy = parseInt(stat_moy / i);
+            stat_moy = stat_moy / i;
             result_element.innerHTML += `Stats: min=${stat_min}ms, max=${stat_max}ms, moy=${stat_moy}ms`;
         } catch(e){
             result_element.innerHTML = 'Error, unknown host'
@@ -36,7 +36,7 @@ function Ping() {
     const fetchData = async () => {
         document.getElementById('result').innerHTML = "Pinging... ";
         try {
-            const response = await fetch(`http://localhost:5000/ping?addr=${inputValue}`);
+            const response = await fetch(`http://192.168.1.153:5001/ping?addr=${inputValue}`);
             const data = await response.json();
             interpreter(data);
         } catch (error) {
