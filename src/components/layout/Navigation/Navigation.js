@@ -12,7 +12,7 @@ function Navigation() {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto d-flex flex-wrap">
                         <NavLink link="/ping" title="Ping"/>
-                        <NavLink link="/about" title="About"/>
+                        <NavLink link="/passwd" title="Password Generator"/>
                         {/*<NavDropdown title="Dropdown" id="basic-nav-dropdown">
                             <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                             <NavDropdown.Item href="#action/3.2">
@@ -24,6 +24,7 @@ function Navigation() {
                                 Separated link
                             </NavDropdown.Item>
                         </NavDropdown>*/}
+                        <NavLink link="/about" title="About"/>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
